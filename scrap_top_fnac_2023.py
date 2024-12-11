@@ -3,16 +3,16 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import re
 
-# Fonction pour scraper une page donnée
-def scrape_titles_and_authors(url, month):
+# On crée une fonction pour scraper une page donnée
+def scrape_titles_and_authors(url, month): # cette fonction prend pour argument l'url et le mois
     response = requests.get(url)
-    response.encoding = "utf-8"  # On garantit le bon encodage
-    data = []
+    response.encoding = "utf-8"  # pour garantir le bon encodage
+    data = [] #on crée une liste vide où on va mettre les données scrappées
 
     if response.status_code == 200:  # On vérifie si la requête est un succès
-        soup = BeautifulSoup(response.text, 'html5lib')
+        soup = BeautifulSoup(response.text, 'html5lib') #on précie la manière de parcourir le code
 
-        # Rechercher toutes les balises <h2> avec la classe "title-part"
+        # On recherche toutes les balises <h2> avec la classe "title-part"
         titles = soup.find_all('h2', class_='title-part')
         for title in titles:
             raw_text = title.text.strip()  # Texte brut pour manipulation
@@ -20,7 +20,7 @@ def scrape_titles_and_authors(url, month):
             # Debugging : Afficher le texte brut
             print(f"Texte brut extrait : {raw_text}")
 
-            # Regex pour extraire les informations
+            # On fait un regex pour extraire les informations car on a remarqué que les pages étaient structurées de la même façon classement-titre-auteur,co-auteur (edition)
             match = re.match(r'^(\d+)\s[–—]\s(.+?)\s[–—]\s(.+?)(?:,\s(.+?))?\s\((.+?)\)$', raw_text)
             if match:
                 classement = match.group(1).strip()  # Classement
@@ -32,7 +32,7 @@ def scrape_titles_and_authors(url, month):
                 # Debugging : Afficher les informations extraites
                 print(f"Classement : {classement}, Titre : {titre}, Auteur principal : {auteur_principal}, Co-auteur : {co_auteur}, Maison d'édition : {maison_edition}")
 
-                # Ajouter les données dans la liste
+                # On ajoute les données dans la liste
                 data.append([month, classement, titre, auteur_principal, co_auteur, maison_edition])
     else:
         print(f"Erreur lors du scraping de {month}: Status code {response.status_code}")
