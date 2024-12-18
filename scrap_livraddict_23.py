@@ -40,6 +40,9 @@ if response.status_code == 200:  # Vérifie que le site autorise le scraping
     # Convertir les données en DataFrame
     df_livraddict_data = pd.DataFrame(livraddict_data, columns=['Catégorie', 'Titre', 'Auteur'])
 
+    # Ajout de la colonne indicatrice "top_livraddict"
+    df_livraddict_data['top_livraddict'] = 1
+
     # Afficher le DataFrame
     print(df_livraddict_data)
 
@@ -47,3 +50,4 @@ if response.status_code == 200:  # Vérifie que le site autorise le scraping
     df_livraddict_data.to_csv('livraddict_prix_2024.csv', index=False, encoding='utf-8')
 else:
     print(f"Erreur {response.status_code} lors de la requête.")
+    

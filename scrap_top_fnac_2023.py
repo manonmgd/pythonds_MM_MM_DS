@@ -65,7 +65,17 @@ for url, month in urls_months:
     top_data_2023.extend(month_data)
 
 # On convertit les données en DataFrame pandas
-df_top_books_2023 = pd.DataFrame(top_data_2023, columns=["Mois", "Classement", "Titre", "Auteur principal", "Co-auteur", "Maison d'édition"])
+df_top_books_2023 = pd.DataFrame(top_data_2023, columns=["Mois", "Classement", "Titre", "Auteur", "Co-auteur", "Maison d'édition"])
+
+# Création de la variable indicatrice "top_fnac_1" (tous les livres ont un classement)
+df_top_books_2023['top_fnac_1'] = 1
+
+# Comptage des occurrences des livres pour créer "top_fnac_2_plus"
+counts = df_top_books_2023['Titre'].value_counts()
+df_top_books_2023['top_fnac_2_plus'] = df_top_books_2023['Titre'].apply(lambda x: 1 if counts[x] > 1 else 0)
+
+# Suppression des colonnes "Mois" et "Classement", et suppression des doublons
+df_top_books_2023 = df_top_books_2023.drop(columns=["Mois", "Classement"]).drop_duplicates(subset=['Titre'])
 
 # On affiche le DataFrame
 print(df_top_books_2023)
