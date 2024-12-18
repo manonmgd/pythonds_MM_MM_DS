@@ -37,6 +37,9 @@ if response.status_code == 200:  # Vérifie que le site autorise le scraping
     # On convertie les données en DataFrame
     df_babelio_data = pd.DataFrame(babelio_data, columns=['Titre', 'Auteur'])
 
+       # Ajout de la colonne indicatrice "top_babelio"
+    df_babelio_data['top_babelio'] = 1
+
     # On affiche le DataFrame
     print(df_babelio_data)
 
