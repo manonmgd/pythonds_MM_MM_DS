@@ -20,20 +20,22 @@ def scrape_titles_and_authors(url, month): # cette fonction prend pour argument 
             # Debugging : Afficher le texte brut
             print(f"Texte brut extrait : {raw_text}")
 
-            # On fait un regex pour extraire les informations car on a remarqué que les pages étaient structurées de la même façon classement-titre-auteur,co-auteur (edition)
-            match = re.match(r'^(\d+)\s[–—]\s(.+?)\s[–—]\s(.+?)(?:,\s(.+?))?\s\((.+?)\)$', raw_text)
+            # On fait un regex pour extraire les informations
+            match = re.match(r'^(\d+)\s[–—]\s(.+?)\s[–—]\s(.+?)(?:[,/]\s(.+?))?\s\((.+?)\)$', raw_text)
             if match:
                 classement = match.group(1).strip()  # Classement
                 titre = match.group(2).strip()  # Titre
                 auteur_principal = match.group(3).strip()  # Auteur principal
-                co_auteur = match.group(4).strip() if match.group(4) else None  # Co-auteur (facultatif)
+                co_auteur_raw = match.group(4).strip() if match.group(4) else None  # Co-auteur brut (facultatif)
                 maison_edition = match.group(5).strip()  # Maison d'édition
 
-                # Debugging : Afficher les informations extraites
-                print(f"Classement : {classement}, Titre : {titre}, Auteur principal : {auteur_principal}, Co-auteur : {co_auteur}, Maison d'édition : {maison_edition}")
+                # Traitement des co-auteurs pour les séparer en liste
+                co_auteurs = []
+                if co_auteur_raw:
+                    co_auteurs = re.split(r',\s|/\s', co_auteur_raw)  # Diviser par virgule ou slash
 
-                # On ajoute les données dans la liste
-                data.append([month, classement, titre, auteur_principal, co_auteur, maison_edition])
+                # Ajouter les informations dans la liste (sans maison d'édition)
+                data.append([month, classement, titre, auteur_principal] + co_auteurs[:2])  # Max 2 co-auteurs
     else:
         print(f"Erreur lors du scraping de {month}: Status code {response.status_code}")
 
@@ -64,8 +66,8 @@ for url, month in urls_months:
     month_data = scrape_titles_and_authors(url, month)
     top_data_2023.extend(month_data)
 
-# On convertit les données en DataFrame pandas
-df_top_books_2023 = pd.DataFrame(top_data_2023, columns=["Mois", "Classement", "Titre", "Auteur", "Co-auteur", "Maison d'édition"])
+# Conversion des données en DataFrame pandas
+df_top_books_2023 = pd.DataFrame(top_data_2023, columns=["Mois", "Classement", "Titre", "Auteur", "Co_auteur1", "Co_auteur2"])
 
 # Création de la variable indicatrice "top_fnac_1" (tous les livres ont un classement)
 df_top_books_2023['top_fnac_1'] = 1
