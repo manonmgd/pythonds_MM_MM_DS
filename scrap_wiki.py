@@ -59,8 +59,8 @@ def scrape_wikipedia_page_france(year):
 # On initialise une liste pour contenir toutes les données
 all_data = []
 
-# On Scrappe les pages de 2003 à 2023 uniquement pour la section France
-for year in range(2003, 2024):
+# On Scrappe les pages de 2019 à 2023 uniquement pour la section France
+for year in range(2019, 2024):
     print(f"Scraping pour l'année {year}...")
     year_data = scrape_wikipedia_page_france(year)
     all_data.extend(year_data)
@@ -69,5 +69,5 @@ for year in range(2003, 2024):
 df_prix_france = pd.DataFrame(all_data, columns=["Année", "Prix", "Auteur", "Titre"])
 
 # On sauvegarde dans un fichier CSV
-df_prix_france.to_csv("prix_litteraires_france_2003_2023.csv", index=False, encoding="utf-8")
-print("Scraping terminé. Données sauvegardées dans 'prix_litteraires_france_2003_2023.csv'.")
+df_prix_france.to_csv("prix_litteraires_france_2019_2023.csv", index=False, encoding="utf-8")
+print("Scraping terminé. Données sauvegardées dans 'prix_litteraires_france_2019_2023.csv'.")
