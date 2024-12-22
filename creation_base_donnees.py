@@ -5,38 +5,23 @@ df_top_books_fnac_2023 = pd.read_csv("best_sellers_fnac_2023_cleaned.csv")
 df_babelio_top_23 = pd.read_csv("babelio_top_23.csv")
 df_livraddict_prix_2024 = pd.read_csv("livraddict_prix_2024.csv")
 
-# Normalisation des titres (supprime les espaces inutiles et met en minuscules)
-def normalize_title(title):
-    return ' '.join(title.lower().strip().split())
+# Normaliser les titres pour ignorer la casse (convertir en minuscules)
+df_top_books_fnac_2023['Titre'] = df_top_books_fnac_2023['Titre'].str.lower()
+df_babelio_top_23['Titre'] = df_babelio_top_23['Titre'].str.lower()
+df_livraddict_prix_2024['Titre'] = df_livraddict_prix_2024['Titre'].str.lower()
 
-df_fnac['Titre_normalized'] = df_fnac['Titre'].apply(normalize_title)
-df_babelio['Titre_normalized'] = df_babelio['Titre'].apply(normalize_title)
+# On fusionne les tables sur la colonne "Titre"
+merged_df = df_top_books_fnac_2023.merge(df_babelio_top_23, on="Titre", how="outer")
+merged_df = merged_df.merge(df_livraddict_prix_2024, on="Titre", how="outer")
 
-# Fusion avec similarité
-def find_closest_match(row, target_df, threshold=90):
-    """
-    Trouve le titre le plus proche en termes de similarité.
-    Si aucun titre ne dépasse le seuil, retourne None.
-    """
-    match, score = process.extractOne(
-        row['Titre_normalized'], 
-        target_df['Titre_normalized'], 
-        scorer=fuzz.ratio
-    )
-    return match if score >= threshold else None
+# Créer une colonne unique "Auteur" en priorisant les colonnes existantes
+merged_df['Auteur'] = merged_df['Auteur'].combine_first(merged_df['Auteur_x']).combine_first(merged_df['Auteur_y'])
 
-# Ajouter les correspondances
-df_fnac['Match_babelio'] = df_fnac.apply(
-    lambda row: find_closest_match(row, df_babelio), axis=1
-)
+# Supprimer les colonnes inutiles "Auteur_x" et "Auteur_y"
+merged_df.drop(columns=['Auteur_x', 'Auteur_y'], inplace=True)
 
-# Marquer les correspondances trouvées
-df_fnac['top_babelio'] = df_fnac['Match_babelio'].notna().astype(int)
+# Enregistrer le résultat dans un fichier CSV
+merged_df.to_csv("merged_books_data.csv", index=False)
 
-# Supprimer les colonnes intermédiaires si nécessaire
-df_fnac = df_fnac.drop(columns=['Titre_normalized', 'Match_babelio'])
-df_babelio = df_babelio.drop(columns=['Titre_normalized'])
-
-# Exporter le résultat
-df_fnac.to_csv("merged_top_books.csv", index=False, encoding="utf-8")
-print("Merge réalisé et exporté dans 'merged_top_books.csv'")
+# Message de confirmation
+print("Fusion terminée. Les données combinées avec une seule colonne 'Auteur' et insensibilité à la casse sont enregistrées dans 'merged_books_data.csv'.")
