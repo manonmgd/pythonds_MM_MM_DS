@@ -31,4 +31,4 @@ merged_df.drop(columns=['Auteur_x', 'Auteur_y'], inplace=True)
 merged_df.to_csv("merged_books_data.csv", index=False)
 
 #message de fin pour vérifier
-Print("fusion terminée")
+print("fusion terminée")
