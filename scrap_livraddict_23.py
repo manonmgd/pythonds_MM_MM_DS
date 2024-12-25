@@ -9,7 +9,8 @@ livraddict_top_2023 = "https://www.livraddict.com/prix-livraddict/2024/"
 response = requests.get(livraddict_top_2023)
 response.encoding = 'utf-8'
 
-if response.status_code == 200:  # Vérifie que le site autorise le scraping
+# On vérfie que le site autorise le scraping et on scrap si oui
+if response.status_code == 200:  
     soup = BeautifulSoup(response.text, 'html.parser')
 
     # Liste pour stocker les données extraites
@@ -18,7 +19,7 @@ if response.status_code == 200:  # Vérifie que le site autorise le scraping
     # On parcourt toutes les catégories
     categories = soup.find_all('div', class_='categorie_prix portlet light')
     for category in categories:
-        # On extrait le nom de la catégorie et supprime "catégorie" si présent
+        # On extrait le nom de la catégorie et supprime "catégorie" devant si présent
         category_name = category.find('h2').text.strip()
         if "catégorie" in category_name.lower():
             category_name = category_name.lower().replace("catégorie", "").strip().capitalize()
@@ -37,17 +38,16 @@ if response.status_code == 200:  # Vérifie que le site autorise le scraping
             if title and author:
                 livraddict_data.append([category_name, title, author])
 
-    # Convertir les données en DataFrame
+    # On convertit les données en DataFrame
     df_livraddict_data = pd.DataFrame(livraddict_data, columns=['Catégorie', 'Titre', 'Auteur'])
 
-    # Ajout de la colonne indicatrice "top_livraddict"
+    # On ajoute une colonne indicatrice "top_livraddict"
     df_livraddict_data['top_livraddict'] = 1
 
-    # Afficher le DataFrame
+    # On affiche le DataFrame
     print(df_livraddict_data)
 
-    # Enregistrer les données dans un fichier CSV
+    # On enregistre les données dans un fichier CSV
     df_livraddict_data.to_csv('livraddict_prix_2024.csv', index=False, encoding='utf-8')
 else:
     print(f"Erreur {response.status_code} lors de la requête.")
-    
