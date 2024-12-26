@@ -69,10 +69,70 @@ df_final['any_top_indicator'] = (
 # on affiche pour vérification
 print(df_final[['top_fnac_1', 'top_babelio', 'top_livraddict', 'any_top_indicator']].head(10))
 
-
 # Afficher le résultat de la transformation
 print(df_final.head(10))
 
-# Sauvegarder dans un fichier CSV
-df_final.to_csv("final_merged_books_data.csv", index=False, encoding="utf-8")
-print("Données fusionnées sauvegardées dans 'final_merged_books_data.csv'.")
+#on va nettoyer un a un les problèmes persistants qui sont liés à des titres écrits de façon différente
+"""
+il y a des moments où on a des des problèmes de fusion donc on voudrait modifier à la main les données, 
+l'idée est de fusionner les deux titres en double avec leurs données (on garde le titre du premier, 
+pour les variables vides si une des deux n'a pas la variable vide on garde celle pas vide et pour celles qui valent 0 ou 1 
+on garde celle qui vaut 1). 
+"""
+# Paires à fusionner
+pairs = [
+    ("astérix tome 40 : l’iris blanc", "astérix, tome 40 : l’iris blanc"),
+    ("beyond the story : 10 ans de souvenirs de bts (beyond the story: 10-year record of bts)", "beyond the story, 10 ans de souvenirs de bts"),
+    ("bleak", "bleak, 3 histoires d’horreur volume 2"),
+    ("captive t1", "captive, tome 1"),
+    ("elles, tome 3 : plurielle(s)", "elles, tome 3 : plurielle(s)"),
+    ("la femme de ménage", "la femme de ménage, tome 1 (the housemaid, book 1)"),
+    ("la nuit où les étoiles ses sont éteintes t1", "la nuit où les étoiles ses sont éteintes, tome 1"),
+    ("les cahiers d’esther, tome 8 : histoires de mes 17 ans", "les cahiers d’esther, tome8 : histoires de mes 17 ans"),
+    ("les sept surs, tome 8 : atlas, l'histoire de pa salt", "les sept sœurs : atlas, l’histoire de pa salt"),
+    ("lou ! sonata, tome 2", "lou, tome 2 : sonata"),
+    ("mortelle adèle et les reliques du chat lune, tome 4", "mortelle adèle, tome 4 : v.i.b"),
+]
+
+# Fonction pour fusionner deux lignes
+def merge_rows(row1, row2):
+    merged = []
+    for col in df_final.columns:
+        if col == "Titre":
+            merged.append(row2[col])  # Toujours garder le titre du deuxième
+        elif col in ["top_fnac_1", "prix_19_20", "top_fnac_2_plus", "top_babelio", "top_livraddict", "any_top_indicator"]:
+            # Pour les colonnes binaires, on garde 1 si l'un des deux a 1
+            merged.append(max(row1[col], row2[col]))
+        else:
+            # Garder la valeur non nulle si elle existe
+            merged.append(row1[col] if pd.notnull(row1[col]) else row2[col])
+    return merged
+
+# Créer une nouvelle table avec les données fusionnées
+merged_data = []
+
+for pair in pairs:
+    title1, title2 = pair
+    rows1 = df_final[df_final["Titre"] == title1]
+    rows2 = df_final[df_final["Titre"] == title2]
+
+    if not rows1.empty and not rows2.empty:
+        row1 = rows1.iloc[0]
+        row2 = rows2.iloc[0]
+        merged_data.append(merge_rows(row1, row2))
+    else:
+        print(f"Warning: One of the titles not found for pair: {pair}")
+
+# Convertir les données fusionnées en DataFrame
+merged_df = pd.DataFrame(merged_data, columns=df_final.columns)
+
+# Mettre à jour le DataFrame de base avec les données fusionnées
+for row in merged_data:
+    title = row[df_final.columns.get_loc("Titre")]
+    df_final = df_final[df_final["Titre"] != title]  # Supprimer les anciennes entrées correspondantes
+    df_final = pd.concat([df_final, pd.DataFrame([row], columns=df_final.columns)], ignore_index=True)
+
+# Sauvegarder le DataFrame mis à jour dans le fichier CSV
+df_final.to_csv("df_final_updated.csv", index=False, encoding='utf-8')
+
+print("Fusion terminée et fichier mis à jour sauvegardé sous 'df_final_updated.csv'.")
