@@ -16,7 +16,7 @@ print(prix_litteraires_data.head(10))
 prix_litteraires_data['Titre'] = prix_litteraires_data['Titre'].str.strip().str.lower()
 
 # On fusionne les deux DataFrames sur "Titre" en conservant tous les livres des deux tables
-df_final = pd.merge(
+df_intermediaire = pd.merge(
     prix_litteraires_data, 
     merged_books_data, 
     on="Titre",  # Fusion sur la colonne "Titre"
@@ -24,7 +24,7 @@ df_final = pd.merge(
 )
 
 # On crée une seule colonne "Auteur" en priorisant "Auteur_y" puis "Auteur_x"
-df_final['Auteur'] = df_final['Auteur_y'].combine_first(df_final['Auteur_x'])
+df_intermediaire['Auteur'] = df_intermediaire['Auteur_y'].combine_first(df_intermediaire['Auteur_x'])
 
 # Extraction de "Co_auteur1" et modification de "Auteur"
 def extraire_co_auteur(auteur):
@@ -36,19 +36,24 @@ def extraire_co_auteur(auteur):
     return None
 
 # Créer une nouvelle colonne "Co_auteur1"
-df_final['Co_auteur1'] = df_final['Auteur'].apply(extraire_co_auteur)
+df_intermediaire['Co_auteur1'] = df_intermediaire['Auteur'].apply(extraire_co_auteur)
 
 # Supprimer "et" et ce qui suit dans "Auteur"
-df_final['Auteur'] = df_final['Auteur'].str.replace(r"\bet\b.*", "", regex=True).str.strip()
+df_intermediaire['Auteur'] = df_intermediaire['Auteur'].str.replace(r"\bet\b.*", "", regex=True).str.strip()
 
 # Supprimer les colonnes inutiles "Auteur_x" et "Auteur_y"
-df_final.drop(columns=['Auteur_x', 'Auteur_y'], inplace=True)
+df_intermediaire.drop(columns=['Auteur_x', 'Auteur_y'], inplace=True)
 
 
 #on regarde les différentes variables
-print(df_final.columns)
+print(df_intermediaire.columns)
 
-#on transforme en variables binaires prix_19_20, top_babelio, top_fnac_1, top_fnac_2_plus
+
+"""
+A partir d'ici je vais reprendre avec la nouvelle table bibli donc il faudra le placer après le merge bibli
+"""
+
+# On transforme en variables binaires prix_19_20, top_babelio, top_fnac_1, top_fnac_2_plus
 variables_binaires = ['prix_19_20', 'top_fnac_1', 'top_fnac_2_plus', 'top_babelio', 'top_livraddict']
 
 for var in variables_binaires:
