@@ -18,6 +18,8 @@ Tout d'abord, lancer la commande `pip install -r requirements.txt` afin d'instal
 
 ## Méthodologie 
 
+Le détail de la création de la base de donnée se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/cr%C3%A9ation_base.ipynb)
+
 Nous exploitons des données issues de scrapping pour analyser la consommation réelle de livres. Cela inclut les classements mensuels du top 10 des ventes de la Fnac en 2023, le top 23 des livres les plus lus sur Babelio, ainsi que les 100 ouvrages les plus empruntés dans une bibliothèque parisienne. En parallèle, nous avons collecté des informations sur les prix littéraires, en distinguant d'une part les prix institutionnels français des cinq dernières années (provenant de Wikipédia), et d'autre part les livres primés par les internautes sur le réseau social littéraire Livraddict. Enfin, nous avons croiser ces données avec des informations issues de l'API YouTube pour évaluer si les livres populaires en 2023 (qu'ils soient appréciés ou simplement consommés) ont été mis en avant sur la communauté Booktube.
 
 Le scrapper, à chaque fois scrapp et stock dans un fichier csv:
@@ -29,4 +31,19 @@ Le scrapper, à chaque fois scrapp et stock dans un fichier csv:
 
 Une fois les bases de données fusionnées il nous reste 492 livres dans la base `base_finale.csv`
 
-##
+> rajouter partie youtube
+
+
+## Etude de la consommation de livres
+
+Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement notamment par des prix et ceux qui étaient reconnus par les internautes n'étaient pas nécessairement les mêmes 
+
+   ![image](/reco_institutionnelle..png)   
+   [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
+
+
+
+## Influence de Booktube sur la consommation de livres
+
+## Conclusion
+
