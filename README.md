@@ -34,6 +34,8 @@ Etape 3 : Créer des identifiants pour l'API
 
 ## Méthodologie 
 
+### Récupération et traitement des données
+
 Le détail de la création de la base de donnée se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/cr%C3%A9ation_base.ipynb)
 
 Nous exploitons des données issues de scrapping et d'API pour analyser la consommation réelle de livres. Cela inclut les  classements mensuels du top 10 des ventes de la Fnac en 2023, le top 23 des livres les plus lus sur Babelio, ainsi que les 100 ouvrages les plus empruntés dans une bibliothèque parisienne. En parallèle, nous avons collecté des informations sur les prix littéraires, en distinguant d'une part les prix institutionnels français des cinq dernières années (provenant de Wikipédia), et d'autre part les livres primés par les internautes sur le réseau social littéraire Livraddict. Enfin, nous avons croisé ces données avec des informations issues de l'API YouTube pour évaluer si les livres populaires en 2023 (qu'ils soient appréciés ou simplement consommés) ont été mis en avant sur la communauté Booktube.
@@ -49,8 +51,11 @@ Dans l'API de la bibliothèque nous avons récupéré les 100 emprunts les plus 
 Une fois les bases de données fusionnées il nous reste 492 livres dans la base `base_finale.csv`
 
 Dans l'API youtube, on a pu récupéré les titres, descriptions, sous-titres et dates de publication de vidéos youtube portant sur des livres. On s'est intéressé aux vidéos publiées entre 2019 et 2023 et aux vidéos portant sur des livres sortis en 2023 pour créer des bases de données de vidéos youtube. On a ensuite cherché les titres et noms d'auteurs des livres (de nos bases de données de livres créées précédemment) dans les descriptions et sous-titres des vidéos (de nos bases de données de vidéos youtube). On a ainsi pu noter les nombres d'occurrences dans les différentes bases de données de vidéos pour les différentes bases de données de livres afin d'estimer le nombre de vidéos youtube portant sur les livres de nos bases de données de livre.
+Nous avons également utilisé l'API youtube afin de récupérer les descriptions et sous-titres des videos qui pourraient mentionner les livres de notre base. La `base_finale_with_youtube.csv` contient donc les mêmes données que la base_finale.csv` enrichie des données de youtube. 
 
-## Etude de la consommation de livres
+## Visualisation et analyse descriptive
+
+Le détail de la partie visualisation et analyse descripte se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
 
 Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement notamment par des prix et ceux qui étaient reconnus par les internautes n'étaient pas nécessairement les mêmes. Cela nous permet d'avoir une base de données diversifiée qui souligne les différents types de reconnaissances que peut avoir un livre.
 
