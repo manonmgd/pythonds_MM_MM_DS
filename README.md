@@ -48,7 +48,7 @@ Dans l'API de la bibliothèque nous avons récupéré les 100 emprunts les plus 
 
 Une fois les bases de données fusionnées il nous reste 492 livres dans la base `base_finale.csv`
 
-> rajouter partie youtube
+Dans l'API youtube, on a pu récupéré les titres, descriptions, sous-titres et dates de publication de vidéos youtube portant sur des livres. On s'est intéressé aux vidéos publiées entre 2019 et 2023 et aux vidéos portant sur des livres sortis en 2023 pour créer des bases de données de vidéos youtube. On a ensuite cherché les titres et noms d'auteurs des livres (de nos bases de données de livres créées précédemment) dans les descriptions et sous-titres des vidéos (de nos bases de données de vidéos youtube). On a ainsi pu noter les nombres d'occurrences dans les différentes bases de données de vidéos pour les différentes bases de données de livres afin d'estimer le nombre de vidéos youtube portant sur les livres de nos bases de données de livre.
 
 ## Etude de la consommation de livres
 
