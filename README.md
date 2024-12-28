@@ -52,13 +52,19 @@ Une fois les bases de données fusionnées il nous reste 492 livres dans la base
 
 ## Etude de la consommation de livres
 
-Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement notamment par des prix et ceux qui étaient reconnus par les internautes n'étaient pas nécessairement les mêmes 
+Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement notamment par des prix et ceux qui étaient reconnus par les internautes n'étaient pas nécessairement les mêmes. Cela nous permet d'avoir une base de données diversifiée qui souligne les différents types de reconnaissances que peut avoir un livre.
+
+   ![image](proportion_bestsellers_fnac_prix.png)   
+   [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
+
+On s'est ensuite intéressée 
 
    ![image](reco_institutionnelle.png)   
    [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
+ 
+  Il n'y a pas de différence flagrante de proportion de livres faisant partie du top Livraddict entre l'ensemble des bestsellers et les "super bestsellers". Par contre, il y a une différence plus flagrante en terme de prix littéraire, d'environ sept points de pourcentages. Toutefois, cette différence est évidemment à nuancer étant donné la taille des échantillons. Il n'en reste qu'il est intéressant d'observer que les plus gros bestsellers ont une propension plus grande à avoir été primés que les autres bestsellers, même si la proportion de livres primés reste plutôt faible.
 
-
-## Influence de Booktube sur la consommation de livres
+## Modélisation
 
 ## Conclusion
 
