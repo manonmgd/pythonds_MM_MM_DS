@@ -8,18 +8,7 @@ L'intégralité de l'analyse est disponible [ici](https://github.com/manonmgd/py
 
 Chaque année, les livres reçoivent des centaines de prix littéraires, témoins de leur qualité, de leur impact ou de leur originalité. Cependant, ces distinctions ne sont pas les seuls moteurs de la popularité des ouvrages : l'influence des réseaux sociaux, comme YouTube à travers sa communauté "Booktube", joue un rôle croissant dans la mise en avant de certains livres auprès du grand public. Ce projet vise à identifier les déterminants de la popularité des livres en combinant l'étude des prix littéraires et l'analyse de l'impact des influenceurs sur YouTube.
 
-<div style="
-    font-family: 'Arial', sans-serif; 
-    text-align: center; 
-    padding: 10px; 
-    background-color:rgb(210, 199, 255); 
-    color: black; 
-    border-radius: 5px; 
-    font-size: 1.5em;
-">
-    <strong>Prérequis</strong>
-</div>
-
+## Prérequis
 
 Tout d'abord, lancer la commande `pip install -r requirements.txt` afin d'installer les packages nécessaires. 
 
@@ -42,30 +31,10 @@ Etape 3 : Créer des identifiants pour l'API
 - Cliquer sur "Create Credentials" et choisir "API key".
 - L'API key générée apparaîtra. Copier cette clé, vous en aurez besoin pour effectuer des requêtes.
 
-<div style="
-    font-family: 'Arial', sans-serif; 
-    text-align: center; 
-    padding: 10px; 
-    background-color:rgb(210, 199, 255); 
-    color: black; 
-    border-radius: 5px; 
-    font-size: 1.5em;
-">
-    <strong>Méthodologie </strong>
-</div>
 
+## Méthodologie 
 
-<div style="
-    font-family: 'Arial', sans-serif; 
-    text-align: center; 
-    padding: 10px; 
-    background-color:rgb(210, 199, 255); 
-    color: black; 
-    border-radius: 5px; 
-    font-size: 1.5em;
-">
-    <strong> Récupération et traitement des données </strong>
-</div>
+### Récupération et traitement des données
 
 Le détail de la création de la base de donnée se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/cr%C3%A9ation_base.ipynb)
 
