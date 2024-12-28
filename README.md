@@ -41,6 +41,7 @@ Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement n
    ![image](/reco_institutionnelle.png)   
    [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
 
+![reco_institutionnelle.png](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
 
 
 ## Influence de Booktube sur la consommation de livres
