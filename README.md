@@ -38,7 +38,7 @@ Une fois les bases de données fusionnées il nous reste 492 livres dans la base
 
 Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement notamment par des prix et ceux qui étaient reconnus par les internautes n'étaient pas nécessairement les mêmes 
 
-   ![image](/reco_institutionnelle..png)   
+   ![image](/reco_institutionnelle.png)   
    [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
 
 
