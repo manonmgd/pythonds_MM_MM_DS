@@ -59,7 +59,6 @@ Le détail de la partie visualisation et analyse descripte se trouve dans [ce fi
 
 Dans cette partie, nous effecctuons les statistiques descriptives afin de décrire les données disponibles et commencer à croiser certaines variables que nous utiliserons ensuite pour la modélisation. On regarde si les livres populaires sont mieux représentés ou non dans les listes de prix littéraires ou dans les classements de qualité faits par les internautes.On regarde la place des livres primés dans les différents top. On s'intéresse également à la proportion de livres mentionnées sur Youtube en fonction des différents top et prix. 
 
-
 ## Modélisation
 
 
