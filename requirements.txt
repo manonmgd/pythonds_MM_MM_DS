@@ -7,3 +7,4 @@ matplotlib >= 3.10.0
 seaborn >= 0.13.2
 plotly >= 5.24.1
 nbformat >= 5.10.4
+youtube-transcript-api >= 0.6.3
