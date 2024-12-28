@@ -13,7 +13,24 @@ Depuis une quinzaine d'années, les réseaux sociaux les plus connus voient se d
 
 Tout d'abord, lancer la commande `pip install -r requirements.txt` afin d'installer les packages nécessaires. 
 
-> Rajouter explication de comment configurer l'api ytb
+### Creation d'un projet sur Google Cloud Console
+
+**Pour utiliser, la YouTube Data API v3 qui nous servira par la suite, il est nécessaire de créer un projet sur Google Cloud Console.**
+
+Etape 1 : Créer un projet sur Google Cloud Console
+-Aller sur [la Google Cloud Console](https://console.cloud.google.com).
+-Créer un nouveau projet en cliquant sur "Select a project" puis "New Project".
+-Donner un nom à votre projet et cliquer sur "Create".
+
+Etape 2 : Activer l'API YouTube Data
+-Aller dans le "API & Services" > "Library" dans la Google Cloud Console.
+-Chercher YouTube Data API v3 et cliquez dessus.
+-Cliquer sur "Enable" pour activer l'API.
+
+Etape 3 : Créer des identifiants pour l'API
+- Aller dans "API & Services" > "Credentials".
+- Cliquer sur "Create Credentials" et choisir "API key".
+- L'API key générée apparaîtra. Copier cette clé, vous en aurez besoin pour effectuer des requêtes.
 
 
 ## Méthodologie 
