@@ -56,19 +56,11 @@ Nous avons également utilisé l'API youtube afin de récupérer les description
 
 Le détail de la partie visualisation et analyse descripte se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
 
-Tout d'abord, nous avons pu noter que les livres reconnus institutionnellement notamment par des prix et ceux qui étaient reconnus par les internautes n'étaient pas nécessairement les mêmes. Cela nous permet d'avoir une base de données diversifiée qui souligne les différents types de reconnaissances que peut avoir un livre.
+Dans cette partie, nous effecctuons les statistiques descriptives afin de décrire les données disponibles et commencer à croiser certaines variables que nous utiliserons ensuite pour la modélisation. On regarde si les livres populaires sont mieux représentés ou non dans les listes de prix littéraires ou dans les classements de qualité faits par les internautes.On regarde la place des livres primés dans les différents top. On s'intéresse également à la proportion de livres mentionnées sur Youtube en fonction des différents top et prix. 
 
-   ![image](proportion_bestsellers_fnac_prix.png)   
-   [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
-
-On s'est ensuite intéressée 
-
-   ![image](reco_institutionnelle.png)   
-   [Source](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
- 
-  Il n'y a pas de différence flagrante de proportion de livres faisant partie du top Livraddict entre l'ensemble des bestsellers et les "super bestsellers". Par contre, il y a une différence plus flagrante en terme de prix littéraire, d'environ sept points de pourcentages. Toutefois, cette différence est évidemment à nuancer étant donné la taille des échantillons. Il n'en reste qu'il est intéressant d'observer que les plus gros bestsellers ont une propension plus grande à avoir été primés que les autres bestsellers, même si la proportion de livres primés reste plutôt faible.
 
 ## Modélisation
+
 
 ## Conclusion
 
