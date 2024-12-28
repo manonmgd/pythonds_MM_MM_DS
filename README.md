@@ -8,7 +8,18 @@ L'intégralité de l'analyse est disponible [ici](https://github.com/manonmgd/py
 
 Chaque année, les livres reçoivent des centaines de prix littéraires, témoins de leur qualité, de leur impact ou de leur originalité. Cependant, ces distinctions ne sont pas les seuls moteurs de la popularité des ouvrages : l'influence des réseaux sociaux, comme YouTube à travers sa communauté "Booktube", joue un rôle croissant dans la mise en avant de certains livres auprès du grand public. Ce projet vise à identifier les déterminants de la popularité des livres en combinant l'étude des prix littéraires et l'analyse de l'impact des influenceurs sur YouTube.
 
-## Prérequis
+<div style="
+    font-family: 'Arial', sans-serif; 
+    text-align: center; 
+    padding: 10px; 
+    background-color:rgb(210, 199, 255); 
+    color: black; 
+    border-radius: 5px; 
+    font-size: 1.5em;
+">
+    <strong>Prérequis</strong>
+</div>
+
 
 Tout d'abord, lancer la commande `pip install -r requirements.txt` afin d'installer les packages nécessaires. 
 
@@ -31,10 +42,30 @@ Etape 3 : Créer des identifiants pour l'API
 - Cliquer sur "Create Credentials" et choisir "API key".
 - L'API key générée apparaîtra. Copier cette clé, vous en aurez besoin pour effectuer des requêtes.
 
+<div style="
+    font-family: 'Arial', sans-serif; 
+    text-align: center; 
+    padding: 10px; 
+    background-color:rgb(210, 199, 255); 
+    color: black; 
+    border-radius: 5px; 
+    font-size: 1.5em;
+">
+    <strong>Méthodologie </strong>
+</div>
 
-## Méthodologie 
 
-### Récupération et traitement des données
+<div style="
+    font-family: 'Arial', sans-serif; 
+    text-align: center; 
+    padding: 10px; 
+    background-color:rgb(210, 199, 255); 
+    color: black; 
+    border-radius: 5px; 
+    font-size: 1.5em;
+">
+    <strong> Récupération et traitement des données </strong>
+</div>
 
 Le détail de la création de la base de donnée se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/cr%C3%A9ation_base.ipynb)
 
@@ -58,7 +89,6 @@ Nous avons également utilisé l'API youtube afin de récupérer les description
 Le détail de la partie visualisation et analyse descripte se trouve dans [ce fichier](https://github.com/manonmgd/pythonds_MM_MM_DS/blob/main/analyse_de_donn%C3%A9es.ipynb)
 
 Dans cette partie, nous effecctuons les statistiques descriptives afin de décrire les données disponibles et commencer à croiser certaines variables que nous utiliserons ensuite pour la modélisation. On regarde si les livres populaires sont mieux représentés ou non dans les listes de prix littéraires ou dans les classements de qualité faits par les internautes.On regarde la place des livres primés dans les différents top. On s'intéresse également à la proportion de livres mentionnées sur Youtube en fonction des différents top et prix. 
-
 
 ## Modélisation
 
