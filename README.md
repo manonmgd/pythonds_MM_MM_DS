@@ -61,6 +61,9 @@ Dans cette partie, nous effectuons les statistiques descriptives afin de décrir
 
 ## Modélisation
 
+Nous utilisons une modélisation linéaire afin de comprendre la corrélation entre la popularité des lires, leur renommée institutionnelle et leur évocation dans une vidéo Youtube, ou dans plus d'une. 
+
 
 ## Conclusion
 
+De nombreux facteurs peuvent influencer l'achat, l'emprunt et la popularité en général des livres. Dans ce projet nous avons essayé d'en traiter certains. Pour commencer, nous avons constitué une base de données constituée de prix institutionnels et d'internautes et d'indices de popularités telles que les ventes, les emprunts dans une bibliothèque, les lectures rentrées sur des sites littéraires. Nous avons ensuite observé les données pour dégager des grandes tendances. Pour finir nous avons tenté une mdoélisation linéaire pour déterminer les liens entre popularité, renommée littéraire et Youtube. 
