@@ -31,6 +31,9 @@ Tout d'abord, lancer la commande `pip install -r requirements.txt` afin d'instal
 - Cliquer sur "Create Credentials" et choisir "API key".
 - L'API key générée apparaîtra. Copier cette clé, vous en aurez besoin pour effectuer des requêtes.
 
+<div style="border: 2px solid purple; padding: 10px; border-radius: 5px; background-color: #f3e5f5;">
+Méthodologie
+</div>
 
 ## Méthodologie 
 
