@@ -47,3 +47,4 @@ if response.status_code == 200:  # Vérifie que le site autorise le scraping
     df_babelio_data.to_csv('babelio_top_23.csv', index=False, encoding='utf-8-sig')  # UTF-8-SIG pour compatibilité Excel
 else:
     print(f"Erreur {response.status_code} lors de la requête.")
+
